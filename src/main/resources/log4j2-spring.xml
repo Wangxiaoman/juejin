@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="30" status="warn" packages="org.apache.logging.log4j.core,io.sentry.log4j2">
+	<Properties>
+		<Property name="LOG_HOME">../logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="info" fileName="${LOG_HOME}/info.log"
+			filePattern="${LOG_HOME}/$${date:yyyyMMdd}/info.log.%d{yyyyMMdd-HH}">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="warn" fileName="${LOG_HOME}/warn.log"
+			filePattern="${LOG_HOME}/$${date:yyyyMMdd}/warn.log.%d{yyyyMMdd-HH}">
+			<ThresholdFilter level="warn" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="error" fileName="${LOG_HOME}/error.log"
+			filePattern="${LOG_HOME}/$${date:yyyyMMdd}/error.log.%d{yyyyMMdd-HH}">
+			<ThresholdFilter level="error" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<!--过滤掉spring和mybatis的一些无用的DEBUG信息 -->
+		<Logger name="org.springframework" level="INFO"></Logger>
+		<Logger name="org.mybatis" level="INFO"></Logger>
+
+		<AsyncLogger name="info" level="INFO" additivity="false">
+			<AppenderRef ref="info" />
+		</AsyncLogger>
+		<Logger name="warn" level="WARN" additivity="false">
+			<AppenderRef ref="warn" />
+		</Logger>
+		<AsyncLogger name="error" level="ERROR" additivity="false">
+			<AppenderRef ref="error" />
+		</AsyncLogger>
+		<Root level="INFO">
+			<AppenderRef ref="catalinaLogger" />
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</configuration>
