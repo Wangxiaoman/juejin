@@ -21,7 +21,8 @@ import im.juejin.alipay.model.AlipayMobilePayParams;
 
 /**
  * 测试类，开发时可参考
- * 
+ * https://docs.open.alipay.com/54/106370/
+ * https://zhuanlan.zhihu.com/p/33548735
  * @author zhangjiayu
  *
  */
@@ -32,7 +33,7 @@ public class AlipayTestController {
 
 	/**
 	 * 移动支付：将传过来的参数构造成支付宝请求链接，包括加密
-	 * 
+	 *  
 	 * 业务逻辑在调用此之前或调用支付宝接口之前处理，比如生成第三方支付记录
 	 * 
 	 * @param params
