@@ -1,6 +1,5 @@
 package im;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.task.configuration.EnableTask;
@@ -29,18 +28,5 @@ public class Application{
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
-	@Bean
-    public MyTaskApplication myTask() {
-        return new MyTaskApplication();
-    }
-	
-    public static class MyTaskApplication implements CommandLineRunner {
-        @Override
-        public void run(String... strings) throws Exception {
-            System.out.println("Hello World");
-        }
-    }
-
 }
 

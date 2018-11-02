@@ -100,13 +100,25 @@
 			<artifactId>commons-pool2</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-task-core</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-task-core</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.taobao.tair</groupId>
+		    <artifactId>tair-client</artifactId>
+		    <version>2.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaomi.infra</groupId>
+			<artifactId>pegasus-client</artifactId>
+			<version>1.8.0-thrift-0.11.0-inlined</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/pegasus-client-1.10.3-thrift-0.11.0-inlined.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -114,6 +126,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+				    <includeSystemScope>true</includeSystemScope>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -133,17 +148,17 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-task-dependencies</artifactId>
-                <version>2.0.0.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-task-dependencies</artifactId>
+				<version>2.0.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
