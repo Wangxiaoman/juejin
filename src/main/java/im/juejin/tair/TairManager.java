@@ -14,7 +14,9 @@ import com.taobao.tair.impl.DefaultTairManager;
 public class TairManager {
     
     @Bean(name = "defaultTairManager")
-    public DefaultTairManager getDefaultTairManager(@Value("${tair.config.servers}")String configServers){
+    public DefaultTairManager getDefaultTairManager(
+            @Value("${tair.config.servers}")String configServers,
+            @Value("${tair.config.group}")String group){
         if(StringUtils.isEmpty(configServers)){
             // warning
             return null;
@@ -22,11 +24,17 @@ public class TairManager {
         
         DefaultTairManager defaultTairManager = new DefaultTairManager();
         List<String> cs = Splitter.on(",").splitToList(configServers);
+        System.out.println("config server list:" + cs);
         defaultTairManager.setConfigServerList(cs);
-        defaultTairManager.setGroupName("context");
+        defaultTairManager.setGroupName(group);
         defaultTairManager.init();
+        Runtime.getRuntime().addShutdownHook(new Thread(()->{close(defaultTairManager);}));
         return defaultTairManager;
     }
     
-    
+    private void close(DefaultTairManager defaultTairManager){
+        if(defaultTairManager != null){
+            defaultTairManager.close();
+        }
+    }
 }
