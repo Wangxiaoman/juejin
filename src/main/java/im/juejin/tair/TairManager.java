@@ -27,6 +27,7 @@ public class TairManager {
         System.out.println("config server list:" + cs);
         defaultTairManager.setConfigServerList(cs);
         defaultTairManager.setGroupName(group);
+        defaultTairManager.setTimeout(4000);
         defaultTairManager.init();
         Runtime.getRuntime().addShutdownHook(new Thread(()->{close(defaultTairManager);}));
         return defaultTairManager;
