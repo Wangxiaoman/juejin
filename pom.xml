@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.1.RELEASE</version>
+		<version>2.0.0.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -34,6 +34,20 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-redis</artifactId>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>io.lettuce</groupId>
+		            <artifactId>lettuce-core</artifactId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -44,10 +58,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -75,6 +85,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
+<!-- 			 <version>3.8.1</version> -->
 		</dependency>
 		<dependency>
 			<groupId>com.lmax</groupId>
@@ -108,13 +119,9 @@
 			<artifactId>spring-cloud-task-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>com.taobao.tair</groupId>
-		    <artifactId>tair-client</artifactId>
-		    <version>2.3.5</version>
+			<groupId>com.taobao.tair</groupId>
+			<artifactId>tair-client</artifactId>
+			<version>2.3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.xiaomi.infra</groupId>
@@ -122,6 +129,13 @@
 			<version>1.8.0-thrift-0.11.0-inlined</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/peglib/pegasus-client-1.8.0-thrift-0.11.0-inlined.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com</groupId>
+			<artifactId>taobao-sdk-java-auto</artifactId>
+			<version>1519895736173-20181110</version>
+			<scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/taobao-sdk-java-auto_1519895736173-20181110.jar</systemPath>
 		</dependency>
 	</dependencies>
 
@@ -131,7 +145,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-				    <includeSystemScope>true</includeSystemScope>
+					<includeSystemScope>true</includeSystemScope>
 				</configuration>
 				<executions>
 					<execution>

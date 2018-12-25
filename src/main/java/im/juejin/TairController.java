@@ -126,12 +126,12 @@ public class TairController {
             int hitCount = 0;
             for (int i = 0; i < keys.size(); i++) {
                 if(readOrWrite){
-                    Object o = tairService.get(1, keys.get(i));
+                    Object o = tairService.get(3, keys.get(i));
                     if(o != null){
                         hitCount++;
                     }
                 }else{
-                    tairService.save(1, keys.get(i), keys.get(i));
+                    tairService.save(3, keys.get(i), keys.get(i));
                 }
                 
                 if(i % 1000 == 0){

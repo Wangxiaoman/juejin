@@ -12,15 +12,15 @@ public class RedisService {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
     
-    private static final String LOCK_VALUE = "lockValue";
-    
-    public boolean lock(String key, long expireSecond) {
-        return stringRedisTemplate.getConnectionFactory().getConnection().set(key.getBytes(),
-                LOCK_VALUE.getBytes(), Expiration.seconds(expireSecond), SetOption.SET_IF_ABSENT);
-    }
-
-    public void unlock(String key) {
-        stringRedisTemplate.delete(key);
-    }
+//    private static final String LOCK_VALUE = "lockValue";
+//    
+//    public boolean lock(String key, long expireSecond) {
+//        return stringRedisTemplate.getConnectionFactory().getConnection().set(key.getBytes(),
+//                LOCK_VALUE.getBytes(), Expiration.seconds(expireSecond), SetOption.SET_IF_ABSENT);
+//    }
+//
+//    public void unlock(String key) {
+//        stringRedisTemplate.delete(key);
+//    }
     
 }

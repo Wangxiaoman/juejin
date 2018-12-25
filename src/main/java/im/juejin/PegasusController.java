@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import im.juejin.pegasus.PegasusClientService;
 
-@RestController
-@RequestMapping("/pg")
+//@RestController
+//@RequestMapping("/pg")
 public class PegasusController {
 
     @Resource

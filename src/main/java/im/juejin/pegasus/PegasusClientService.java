@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.xiaomi.infra.pegasus.client.PException;
 import com.xiaomi.infra.pegasus.client.PegasusClientInterface;
 
-@Service
+//@Service
 public class PegasusClientService {
 
     @Resource
